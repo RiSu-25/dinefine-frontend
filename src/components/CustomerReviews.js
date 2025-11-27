@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import Image from "next/image";
 
 export default function CustomerReviews() {
   const [reviews, setReviews] = useState([]);

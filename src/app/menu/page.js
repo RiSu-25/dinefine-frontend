@@ -230,7 +230,7 @@ export default function MenuPage() {
               ))
             ) : (
               <p className="text-center text-gray-500 text-lg mt-10">
-                No results found for "{searchQuery}"
+                No results found for &quot;{searchQuery}&quot;
               </p>
             )}
           </div>

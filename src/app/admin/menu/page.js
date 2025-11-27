@@ -8,6 +8,7 @@ import {
   FiImage,
   FiStar,
 } from "react-icons/fi";
+import Image from "next/image";
 
 const API_BASE = "https://dinefine-backend-6abd.onrender.com"; // change when deployed
 
