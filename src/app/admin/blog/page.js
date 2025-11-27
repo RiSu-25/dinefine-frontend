@@ -184,7 +184,7 @@ export default function BlogPage() {
             >
               <div className="relative w-full h-48">
                 {blog.image ? (
-                  <img
+                  <Image
                     src={blog.image}
                     alt={blog.title}
                     className="w-full h-full object-cover"
@@ -278,7 +278,7 @@ export default function BlogPage() {
 
                 {formData.imagePreview && (
                   <div className="mt-2 w-28 h-28">
-                    <img
+                    <Image
                       src={formData.imagePreview}
                       className="object-cover w-full h-full rounded-lg"
                       alt="preview"
@@ -322,7 +322,7 @@ export default function BlogPage() {
             </button>
 
             {selectedBlog.image && (
-              <img
+              <Image
                 src={selectedBlog.image}
                 className="w-full h-64 object-cover rounded mb-4"
                 alt={selectedBlog.title}

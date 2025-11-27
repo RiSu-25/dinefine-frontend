@@ -100,7 +100,7 @@ export default function CustomerReviews() {
 
                 <div className="flex items-center gap-4 mt-auto">
                   {/* 🔥 Replaced next/image with normal img (works without config) */}
-                  <img
+                  <Image
                     src={imgSrc}
                     alt={review.name}
                     className="w-10 h-10 rounded-full object-cover"

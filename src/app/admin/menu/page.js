@@ -230,7 +230,7 @@ export default function MenuPage() {
               Menu Management
             </h1>
             <p className="text-sm text-[#00979E]">
-              Manage your restaurant’s dishes and availability
+              Manage your restaurant&quot;s dishes and availability
             </p>
           </div>
 
@@ -279,7 +279,7 @@ export default function MenuPage() {
                   >
                     <td className="px-6 py-4">
                       {item.image ? (
-                        <img
+                        <Image
                           src={item.image}
                           alt={item.name}
                           className="w-14 h-14 object-cover rounded-lg border border-[#CBE9E8]"
@@ -520,13 +520,13 @@ function DishForm({ dish, onChange, onSubmit, onCancel }) {
           className="p-2 border border-[#CBE9E8] rounded-lg bg-white/70 focus:outline-none focus:ring-2 focus:ring-[#009BA8]"
         />
         {dish.imagePreview ? (
-          <img
+          <Image
             src={dish.imagePreview}
             alt="Preview"
             className="w-24 h-24 object-cover rounded-lg border border-[#CBE9E8]"
           />
         ) : dish.image ? (
-          <img
+          <Image
             src={dish.image}
             alt="Preview"
             className="w-24 h-24 object-cover rounded-lg border border-[#CBE9E8]"

@@ -183,7 +183,7 @@ export default function ReviewPage() {
                 </p>
 
                 <div className="flex items-center gap-4 mt-auto">
-                  <img
+                  <Image
                     src={getImageUrl(review.img)}
                     alt={review.name}
                     className="w-12 h-12 object-cover rounded-full"
@@ -281,7 +281,7 @@ export default function ReviewPage() {
               </label>
 
               {previewImg && (
-                <img
+                <Image
                   src={previewImg}
                   alt="preview"
                   className="w-12 h-12 rounded-full object-cover mt-3 border"
