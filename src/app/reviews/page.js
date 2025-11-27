@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { FaStar } from "react-icons/fa";
 
-const API_BASE = "http://localhost:5000";
+const API_BASE = "https://dinefine-backend-6abd.onrender.com";
 
 export default function ReviewPage() {
   const [reviews, setReviews] = useState([]);
@@ -21,12 +21,20 @@ export default function ReviewPage() {
   const [showModal, setShowModal] = useState(false);
 
   const getImageUrl = (imgValue) => {
-    if (!imgValue) return "/customer/default-user.png";
-    if (imgValue.startsWith("http") || imgValue.startsWith("data:")) {
-      return imgValue;
-    }
-    return `${API_BASE}/uploads/${imgValue}`;
-  };
+  if (!imgValue) return "/customer/default-user.png";
+
+  // If Cloudinary URL → return directly
+  if (imgValue.includes("cloudinary")) return imgValue;
+
+  // If it's already a full URL
+  if (imgValue.startsWith("http") || imgValue.startsWith("data:")) {
+    return imgValue;
+  }
+
+  // Otherwise assume local uploads path
+  return `${API_BASE}/uploads/${imgValue}`;
+};
+;
 
   const fetchReviews = async () => {
     try {

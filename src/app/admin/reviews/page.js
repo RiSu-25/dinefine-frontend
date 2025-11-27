@@ -5,7 +5,16 @@ import Image from "next/image";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { FiTrash2 } from "react-icons/fi";
 
-const API_BASE = "http://localhost:5000"; // change on deploy
+const API_BASE = "https://dinefine-backend-6abd.onrender.com"; // change on deploy
+
+// 🔥 FIXED: handles Cloudinary + local image URLs
+const getImageUrl = (img) => {
+  if (!img) return "/customer/default-user.png";
+
+  if (img.startsWith("http")) return img; // Cloudinary URL
+
+  return `${API_BASE}/uploads/${img}`; // old local uploads
+};
 
 export default function ReviewsPage() {
   const [reviews, setReviews] = useState([]);
@@ -87,7 +96,7 @@ export default function ReviewsPage() {
                 >
                   <td className="p-3">
                     <Image
-                      src={`${API_BASE}/uploads/${review.img}`}
+                      src={getImageUrl(review.img)}
                       alt="User"
                       width={45}
                       height={45}
@@ -122,18 +131,17 @@ export default function ReviewsPage() {
           </table>
         </div>
 
-        {/* Mobile Cards (Updated UI) */}
+        {/* Mobile Cards */}
         <div className="space-y-3 md:hidden">
           {reviews.map((review) => (
             <div
               key={review.id}
               className="bg-white/40 backdrop-blur-md rounded-lg p-3 border border-white/30 shadow-sm"
             >
-              {/* Top row: Image + Name + Delete */}
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-3">
                   <Image
-                    src={`${API_BASE}/uploads/${review.img}`}
+                    src={getImageUrl(review.img)}
                     alt="User"
                     width={40}
                     height={40}
@@ -161,10 +169,8 @@ export default function ReviewsPage() {
                 </button>
               </div>
 
-              {/* Stars */}
               <div className="mb-1">{renderStars(review.rating)}</div>
 
-              {/* Comment (compact, line-limited) */}
               <p className="text-gray-700 text-xs leading-snug line-clamp-5">
                 {review.text}
               </p>

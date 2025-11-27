@@ -23,7 +23,7 @@ export default function MenuSection() {
   useEffect(() => {
     const getMenu = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/menu");
+        const res = await fetch("https://dinefine-backend-6abd.onrender.com/api/menu");
         const data = await res.json();
         setMenuItems(data);
       } catch (err) {
@@ -102,7 +102,7 @@ export default function MenuSection() {
                 src={
                   item.imageUrl?.startsWith("http")
                     ? item.imageUrl
-                    : `http://localhost:5000${item.imageUrl}`
+                    : `https://dinefine-backend-6abd.onrender.com${item.imageUrl}`
                 }
                 alt={item.name}
                 fill

@@ -10,7 +10,7 @@ export default function AdminContactPage() {
   // Fetch messages from backend
   const fetchContacts = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/contacts");
+      const res = await fetch("https://dinefine-backend-6abd.onrender.com/api/contacts");
       const data = await res.json();
       setContacts(data);
       setLoading(false);
@@ -26,7 +26,7 @@ export default function AdminContactPage() {
     if (!confirmDelete) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/contacts/${id}`, {
+      const res = await fetch(`https://dinefine-backend-6abd.onrender.com/api/contacts/${id}`, {
         method: "DELETE",
       });
 

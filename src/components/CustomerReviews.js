@@ -1,18 +1,28 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 export default function CustomerReviews() {
   const [reviews, setReviews] = useState([]);
   const [index, setIndex] = useState(0);
 
+  const API_BASE = "https://dinefine-backend-6abd.onrender.com";
+
+  // 🔥 SAFE IMAGE RESOLVER
+  const resolveImage = (img) => {
+    if (!img) return "/customer/default-user.png";
+
+    if (img.startsWith("http")) return img; // cloudinary or external
+
+    return `${API_BASE}/uploads/${img}`; // local uploads
+  };
+
   // Fetch from backend
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/reviews");
+        const res = await fetch(`${API_BASE}/api/reviews`);
         const data = await res.json();
         setReviews(data);
       } catch (error) {
@@ -23,7 +33,6 @@ export default function CustomerReviews() {
     fetchReviews();
   }, []);
 
-  // If no data yet
   if (reviews.length === 0) {
     return (
       <section className="bg-[#fff8f1] py-20 text-center text-xl">
@@ -36,14 +45,11 @@ export default function CustomerReviews() {
   const prevReview = () =>
     setIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
 
-  // ⭐ FIX — Show EXACT backend data (NO REPEATING)
   let visibleReviews = [];
 
   if (reviews.length <= 3) {
-    // Show only real reviews from backend
     visibleReviews = reviews;
   } else {
-    // Carousel mode for 3+ reviews
     visibleReviews = [
       reviews[index],
       reviews[(index + 1) % reviews.length],
@@ -81,9 +87,7 @@ export default function CustomerReviews() {
         {/* Review Cards */}
         <div className="flex flex-col lg:flex-row items-center justify-center gap-8">
           {visibleReviews.map((review, idx) => {
-            const imgSrc = review.img
-              ? `http://localhost:5000/uploads/${review.img}`
-              : "/customer/default-user.png";
+            const imgSrc = resolveImage(review.img);
 
             return (
               <div
@@ -95,12 +99,11 @@ export default function CustomerReviews() {
                 </p>
 
                 <div className="flex items-center gap-4 mt-auto">
-                  <Image
+                  {/* 🔥 Replaced next/image with normal img (works without config) */}
+                  <img
                     src={imgSrc}
                     alt={review.name}
-                    width={40}
-                    height={40}
-                    className="rounded-full object-cover"
+                    className="w-10 h-10 rounded-full object-cover"
                   />
 
                   <div>
@@ -108,7 +111,6 @@ export default function CustomerReviews() {
                       {review.name}
                     </h3>
 
-                    {/* Star rating */}
                     <div className="text-yellow-500 text-sm">
                       {"★".repeat(review.rating)}
                     </div>

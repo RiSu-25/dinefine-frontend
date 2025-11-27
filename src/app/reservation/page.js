@@ -30,7 +30,7 @@ export default function Reservation() {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:5000/api/reservations", {
+      const res = await fetch("https://dinefine-backend-6abd.onrender.com/api/reservations", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

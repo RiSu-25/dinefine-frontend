@@ -15,7 +15,7 @@ import {
   FiPhone,
 } from "react-icons/fi";
 
-const API_BASE = "http://localhost:5000/api/reservations";
+const API_BASE = "https://dinefine-backend-6abd.onrender.com/api/reservations";
 
 export default function ReservationsPage() {
   const [reservations, setReservations] = useState([]);

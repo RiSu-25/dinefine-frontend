@@ -5,7 +5,7 @@ import { FaStar } from "react-icons/fa";
 import { IoArrowBack, IoArrowForward } from "react-icons/io5";
 import { FiShoppingCart } from "react-icons/fi";
 
-const API_BASE = "http://localhost:5000"; // change when deployed
+const API_BASE = "https://dinefine-backend-6abd.onrender.com"; // change when deployed
 
 export default function PopularDishes() {
   const scrollRef = useRef(null);

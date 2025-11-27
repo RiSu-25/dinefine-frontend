@@ -9,7 +9,7 @@ import {
   FiStar,
 } from "react-icons/fi";
 
-const API_BASE = "http://localhost:5000"; // change when deployed
+const API_BASE = "https://dinefine-backend-6abd.onrender.com"; // change when deployed
 
 export default function MenuPage() {
   const [menuItems, setMenuItems] = useState([]);
