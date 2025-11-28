@@ -5,7 +5,7 @@ import Image from "next/image";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { FiTrash2 } from "react-icons/fi";
 
-const API_BASE = "https://dinefine-backend-6abd.onrender.com"; // change on deploy
+const API_BASE = "http://localhost:5000"; // change on deploy
 
 // 🔥 FIXED: handles Cloudinary + local image URLs
 const getImageUrl = (img) => {

@@ -23,9 +23,19 @@ export default function MenuSection() {
   useEffect(() => {
     const getMenu = async () => {
       try {
-        const res = await fetch("https://dinefine-backend-6abd.onrender.com/api/menu");
+        const res = await fetch(
+          "http://localhost:5000/api/menu"
+        );
         const data = await res.json();
-        setMenuItems(data);
+
+        // FIX 🔥 ensure always array
+        const items = Array.isArray(data)
+          ? data
+          : Array.isArray(data.menu)
+          ? data.menu
+          : [];
+
+        setMenuItems(items);
       } catch (err) {
         console.error("Menu fetch failed", err);
       }

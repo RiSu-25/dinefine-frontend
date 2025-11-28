@@ -8,24 +8,20 @@ export default function CustomerReviews() {
   const [reviews, setReviews] = useState([]);
   const [index, setIndex] = useState(0);
 
-  const API_BASE = "https://dinefine-backend-6abd.onrender.com";
+  const API_BASE = "http://localhost:5000";
 
-  // 🔥 SAFE IMAGE RESOLVER
   const resolveImage = (img) => {
     if (!img) return "/customer/default-user.png";
-
-    if (img.startsWith("http")) return img; // cloudinary or external
-
-    return `${API_BASE}/uploads/${img}`; // local uploads
+    if (img.startsWith("http")) return img;
+    return `${API_BASE}/uploads/${img}`;
   };
 
-  // Fetch from backend
   useEffect(() => {
     const fetchReviews = async () => {
       try {
         const res = await fetch(`${API_BASE}/api/reviews`);
         const data = await res.json();
-        setReviews(data);
+        setReviews(Array.isArray(data) ? data : []);
       } catch (error) {
         console.log("Error fetching reviews:", error);
       }
@@ -61,7 +57,6 @@ export default function CustomerReviews() {
   return (
     <section className="bg-[#fff8f1] py-20 px-6 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">
-        {/* Heading & Arrows */}
         <div className="flex items-center justify-between mb-10">
           <h2 className="text-3xl md:text-4xl font-extrabold text-[#1d1d1d]">
             What Our Customer Says?
@@ -85,10 +80,9 @@ export default function CustomerReviews() {
           )}
         </div>
 
-        {/* Review Cards */}
         <div className="flex flex-col lg:flex-row items-center justify-center gap-8">
           {visibleReviews.map((review, idx) => {
-            const imgSrc = resolveImage(review.img);
+            const imgSrc = resolveImage(review?.img ?? "");
 
             return (
               <div
@@ -100,10 +94,11 @@ export default function CustomerReviews() {
                 </p>
 
                 <div className="flex items-center gap-4 mt-auto">
-                  {/* 🔥 Replaced next/image with normal img (works without config) */}
                   <Image
                     src={imgSrc}
                     alt={review.name}
+                    width={40}
+                    height={40}
                     className="w-10 h-10 rounded-full object-cover"
                   />
 

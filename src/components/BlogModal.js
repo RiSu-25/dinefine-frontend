@@ -7,7 +7,7 @@ import { FaTimes, FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 
 export default function BlogModal({ post, onClose }) {
 
-  const BASE_URL = "https://dinefine-backend-6abd.onrender.com";
+  const BASE_URL = "http://localhost:5000";
 
   // Fix image mapping
   const imageSrc = post.imageUrl?.startsWith("http")

@@ -24,7 +24,7 @@ export default function ContactPage() {
     setStatus("Sending...");
 
     try {
-      const res = await fetch("https://dinefine-backend-6abd.onrender.com/api/contacts", {
+      const res = await fetch("http://localhost:5000/api/contacts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

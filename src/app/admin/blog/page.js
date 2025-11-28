@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { FaEdit, FaTrash, FaEye } from "react-icons/fa";
 
-const API_BASE = "https://dinefine-backend-6abd.onrender.com"; // change when deployed
+const API_BASE = "http://localhost:5000"; // change when deployed
 
 // 🔥 Unified image URL resolver
 const resolveImage = (url) => {

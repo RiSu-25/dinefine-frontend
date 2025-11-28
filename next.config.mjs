@@ -4,7 +4,8 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "dinefine-backend-6abd.onrender.com",
+        hostname: "localhost",
+        port: 5000,
         pathname: "/uploads/**",
       },
       {

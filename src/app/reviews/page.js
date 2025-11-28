@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { FaStar } from "react-icons/fa";
 
-const API_BASE = "https://dinefine-backend-6abd.onrender.com";
+const API_BASE = "http://localhost:5000";
 
 export default function ReviewPage() {
   const [reviews, setReviews] = useState([]);
@@ -186,6 +186,8 @@ export default function ReviewPage() {
                   <Image
                     src={getImageUrl(review.img)}
                     alt={review.name}
+                    width={50}
+                    height={50}
                     className="w-12 h-12 object-cover rounded-full"
                   />
                   <div>

@@ -13,7 +13,7 @@ import {
   FaRecycle,
 } from "react-icons/fa";
 
-const API_BASE = "https://dinefine-backend-6abd.onrender.com"; // change when deployed
+const API_BASE = "http://localhost:5000"; // change when deployed
 const BLOGS_ROUTE = `${API_BASE}/api/blog/`;
 
 /* Icons list */

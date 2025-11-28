@@ -5,7 +5,7 @@ import Image from "next/image";
 import { FiShoppingCart } from "react-icons/fi";
 import { useSearchParams } from "next/navigation";
 
-const API_BASE = "https://dinefine-backend-6abd.onrender.com"; // change when deployed
+const API_BASE = "http://localhost:5000"; // change when deployed
 
 // STATIC hero images per section
 const heroImages = {

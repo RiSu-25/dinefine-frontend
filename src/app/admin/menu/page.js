@@ -10,7 +10,7 @@ import {
 } from "react-icons/fi";
 import Image from "next/image";
 
-const API_BASE = "https://dinefine-backend-6abd.onrender.com"; // change when deployed
+const API_BASE = "http://localhost:5000"; // change when deployed
 
 export default function MenuPage() {
   const [menuItems, setMenuItems] = useState([]);
