@@ -84,20 +84,20 @@ export default function BlogPage() {
   };
 
   const handleImageChange = (e) => {
-  const file = e.target.files && e.target.files[0];
-  if (file) {
-    if (file.size > 10 * 1024 * 1024) { // 10MB
-      alert("Image must be less than 10MB");
-      return;
+    const file = e.target.files && e.target.files[0];
+    if (file) {
+      if (file.size > 10 * 1024 * 1024) {
+        // 10MB
+        alert("Image must be less than 10MB");
+        return;
+      }
+      setFormData((prev) => ({
+        ...prev,
+        imageFile: file,
+        imagePreview: URL.createObjectURL(file),
+      }));
     }
-    setFormData((prev) => ({
-      ...prev,
-      imageFile: file,
-      imagePreview: URL.createObjectURL(file),
-    }));
-  }
-};
-
+  };
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -187,7 +187,8 @@ export default function BlogPage() {
                   <Image
                     src={blog.image}
                     alt={blog.title}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                   />
                 ) : (
                   <div className="w-full h-full bg-gray-100 flex items-center justify-center">

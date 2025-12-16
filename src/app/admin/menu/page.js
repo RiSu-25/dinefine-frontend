@@ -283,7 +283,9 @@ export default function MenuPage() {
                         <Image
                           src={item.image}
                           alt={item.name}
-                          className="w-14 h-14 object-cover rounded-lg border border-[#CBE9E8]"
+                          width={56}
+                          height={56}
+                          className="object-cover rounded-lg border border-[#CBE9E8]"
                         />
                       ) : (
                         <div className="w-14 h-14 bg-[#E4F1ED] flex items-center justify-center rounded-lg border border-[#CBE9E8]">
