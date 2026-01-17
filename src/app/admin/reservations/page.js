@@ -92,6 +92,7 @@ export default function ReservationsPage() {
   };
 
   const handleChange = (e) => {
+    // debugger;
     const { name, value } = e.target;
     setForm((p) => ({ ...p, [name]: value }));
   };
@@ -121,6 +122,7 @@ export default function ReservationsPage() {
     🔥 UPDATE RESERVATION → PUT /api/reservations/:id
   ------------------------------------------------------- */
   const handleUpdate = async () => {
+    debugger;
     if (!editing) return;
 
     try {
